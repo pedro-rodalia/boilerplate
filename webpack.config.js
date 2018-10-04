@@ -1,4 +1,7 @@
 const path = require("path");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const devMode = process.env.NODE_ENV !== 'production'
 
 var BUILD_DIR = path.resolve(__dirname, './public/dist');
 var APP_DIR = path.resolve(__dirname, './src');
@@ -21,9 +24,21 @@ const config = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
+      }, {
+        test: /\.css$/,
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader'
+        ]
       }
-    ]
-  }
+    ],
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: devMode ? '[name].css' : '[name].[hash].css'
+    })
+  ]
 };
 
 module.exports = config;
