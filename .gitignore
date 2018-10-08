@@ -17,6 +17,9 @@ lib-cov
 # Webpack build result bundle.js
 ./public/dist/*
 
+# Mac OS DS_Store
+.DS_Store
+
 # Coverage directory used by tools like istanbul
 coverage
 
