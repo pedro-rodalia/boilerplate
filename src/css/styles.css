@@ -35,7 +35,7 @@
  * @import "components/buttons";
  * @import "components/forms";
  */
- @import "components/component";
+ @import "components/boilerplate";
 
 /**
  * This injects all of Tailwind's utility classes, generated based on your
